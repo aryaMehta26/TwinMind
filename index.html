@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TwinMind — Live Suggestions</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header Map -->
+  <header class="app-header">
+    <div class="header-left">
+      <h2>TwinMind — Live Suggestions Web App</h2>
+    </div>
+    <div class="header-right">
+      <span>3-column layout • Transcript • Live Suggestions • Chat</span>
+      <button id="settings-btn" class="icon-btn" aria-label="Settings">⚙️</button>
+      <button id="export-btn" class="icon-btn" aria-label="Export Data">📤 Export</button>
+    </div>
+  </header>
+
+  <main class="three-column-layout">
+    
+    <!-- 1. Left: Transcript & Mic -->
+    <section class="panel transcript-panel">
+      <div class="panel-header">
+        <h3>1. MIC & TRANSCRIPT</h3>
+        <span id="recording-status" class="status-badge idle">IDLE</span>
+      </div>
+      <div class="mic-controls">
+        <button id="mic-btn" class="mic-btn">
+          <span class="mic-icon">🎙️</span>
+        </button>
+        <p class="mic-help">Click mic to start. Transcript appends every ~30s.</p>
+      </div>
+
+      <div class="transcript-container" id="transcript-container">
+        <p class="empty-state">No transcript yet — start the mic.</p>
+      </div>
+    </section>
+
+    <!-- 2. Middle: Live Suggestions -->
+    <section class="panel suggestions-panel">
+      <div class="panel-header">
+        <h3>2. LIVE SUGGESTIONS</h3>
+        <span class="batch-count"><span id="batch-count-val">0</span> BATCHES</span>
+      </div>
+      <div class="suggestions-controls">
+        <button id="refresh-suggestions-btn" class="secondary-btn">↻ Reload suggestions</button>
+        <span class="auto-refresh-notice">auto-refresh in <span id="countdown">30</span>s</span>
+      </div>
+
+      <div class="suggestions-container" id="suggestions-container">
+        <div class="prototype-explanation card-faded">
+          On reload (or auto every ~30s), generate <strong>3 fresh suggestions</strong> from recent transcript context. New batch appears at the top; older batches push down (faded). Each is a tappable card: a <span>question to ask</span>, a <span>talking point</span>, an <span>answer</span>, or a <span>fact-check</span>. The preview alone should already be useful.
+        </div>
+        <p class="empty-state">Suggestions appear here once recording starts.</p>
+      </div>
+    </section>
+
+    <!-- 3. Right: Detailed Chat -->
+    <section class="panel chat-panel">
+      <div class="panel-header">
+        <h3>3. CHAT (DETAILED ANSWERS)</h3>
+        <span class="session-badge">SESSION-ONLY</span>
+      </div>
+      
+      <div class="chat-container" id="chat-container">
+        <div class="prototype-explanation">
+          Clicking a suggestion adds it to this chat and streams a detailed answer (separate prompt, more context). User can also type questions directly. One continuous chat per session — no login, no persistence.
+        </div>
+        <p class="empty-state">Click a suggestion or type a question below.</p>
+      </div>
+
+      <div class="chat-input-area">
+        <textarea id="chat-textarea" placeholder="Ask anything..." rows="1"></textarea>
+        <button id="send-chat-btn" class="primary-btn">Send</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Settings Modal (Overlays App) -->
+  <div id="settings-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>API & Prompt Settings</h3>
+        <button id="close-settings" class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Groq API Key (Stored securely in memory)</label>
+          <input type="password" id="groq-api-key" placeholder="gsk_..." />
+        </div>
+        <div class="form-group">
+          <label>Live Suggestions System Prompt</label>
+          <textarea id="prompt-suggestions" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Expanded Answer System Prompt (On click)</label>
+          <textarea id="prompt-expanded" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Chat System Prompt</label>
+          <textarea id="prompt-chat" rows="3"></textarea>
+        </div>
+        <div class="form-group row-group">
+          <div>
+            <label>Suggestions Context Window (chunks)</label>
+            <input type="number" id="ctx-suggestions" min="1" max="50" value="10" />
+          </div>
+          <div>
+            <label>Expanded Answer Context Window (chunks)</label>
+            <input type="number" id="ctx-expanded" min="1" max="200" value="50" />
+          </div>
+        </div>
+        <div class="form-group row-group">
+          <div>
+            <label>Transcription Model</label>
+            <input type="text" id="model-transcribe" value="whisper-large-v3" readonly />
+          </div>
+          <div>
+            <label>Suggestions/Chat Model</label>
+            <input type="text" id="model-llm" value="gpt-oss-120b" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="save-settings" class="primary-btn">Save Settings</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js?v=5"></script>
+</body>
+</html>
