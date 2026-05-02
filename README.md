@@ -13,7 +13,7 @@
 
 <br/>
 
-[![Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-Click%20Here-6366f1?style=for-the-badge)](https://twinmindtest.netlify.app)
+[![Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-Click%20Here-6366f1?style=for-the-badge)](https://twinmindarya.netlify.app)
 [![Built With](https://img.shields.io/badge/Built%20With-Vanilla%20JS%20%2B%20Groq-10b981?style=for-the-badge)](#)
 [![Model](https://img.shields.io/badge/LLM-Llama%203.3%2070B-f59e0b?style=for-the-badge)](#)
 [![STT](https://img.shields.io/badge/STT-Whisper%20Large%20V3-3b82f6?style=for-the-badge)](#)
