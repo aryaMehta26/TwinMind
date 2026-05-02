@@ -59,7 +59,7 @@ The app is a clean **3-column dark-mode layout**:
 
 ### 2. Open the App
 **Option A — Use the live deploy:**
-👉 **[https://twinmindtest.netlify.app](https://twinmindtest.netlify.app)**
+👉 **[https://twinmindarya.netlify.app](https://twinmindarya.netlify.app)**
 
 **Option B — Run locally (zero install required):**
 ```bash
