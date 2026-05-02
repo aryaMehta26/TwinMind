@@ -6,8 +6,9 @@
 
 <br/>
 
-![Home Page]
-<img width="1470" height="878" alt="image" src="https://github.com/user-attachments/assets/778d085c-a9f0-4726-aa3b-d024e1779043" />
+[Home Page]
+<img width="1470" height="804" alt="image" src="https://github.com/user-attachments/assets/6ccec091-6e48-449b-81ef-f2199739fc2a" />
+
 
 
 <br/>
@@ -43,7 +44,8 @@ The app is a clean **3-column dark-mode layout**:
 | 💡 **Middle** | 3 AI suggestion cards, refreshed every ~30s, stacked newest-first |
 | 💬 **Right** | Streaming chat — click a card or type directly |
 
-![Dashboard](./screenshots/dashboard.png)
+<img width="1470" height="805" alt="image" src="https://github.com/user-attachments/assets/914292e8-2a8f-45a3-a86d-d3b5487ee113" />
+
 
 ---
 
